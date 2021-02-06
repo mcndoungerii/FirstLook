@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button mButton;
     private TextView mTextView;
+    private EditText mEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +25,20 @@ public class MainActivity extends AppCompatActivity {
         //Create a TextView handler
         mTextView = (TextView) findViewById(R.id.mTextView);
 
+        mEditText = (EditText) findViewById(R.id.editText);
+
         //Liserning events from a button
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String myEditedText;
+                myEditedText = mEditText.getText().toString();
+
+                //Set Visibility Property before showing a text
                 mTextView.setVisibility(View.VISIBLE);
-                mTextView.setText(R.string.show_text);
+
+                //Displays a text
+                mTextView.setText(myEditedText);
             }
         });
 
